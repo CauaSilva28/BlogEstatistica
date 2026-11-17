@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estatística Descomplicada</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="progress"></div>
+
+  <header class="top" id="inicio">
+    <a class="brand" href="#inicio">
+      <span class="logo">σ</span> Estatística Descomplicada
+    </a>
+    <button id="menuBtn" type="button" aria-label="Abrir menu">☰</button>
+    <nav id="menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#bim1">1º Bimestre</a>
+      <a href="#bim2">2º Bimestre</a>
+      <input id="busca" type="search" placeholder="Pesquisar conteúdo…" aria-label="Pesquisar conteúdo">
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="sobre">
+      <h1>Estatística e Probabilidade, passo a passo</h1>
+      <p>Material de estudo da disciplina de Estatística (FATEC) com os conteúdos do 1º e do 2º bimestre: conceito, fórmula, exemplo resolvido e interpretação, sempre na mesma ordem.<br>Blog feito pelo aluno: Cauã Silva Moreira Santos 4°DSM</p>
+      <div class="hero-actions">
+        <a class="btn" href="#bim1">Começar pelo 1º bimestre</a>
+        <a class="btn ghost" href="#bim2">Ir ao 2º bimestre</a>
+      </div>
+    </section>
+
+    <section class="intro">
+      <h2>Por que estudar Estatística e Probabilidade?</h2>
+      <p>A <b>Estatística</b> transforma dados em informação: resume, compara e permite decidir com base em números. A <b>Probabilidade</b> mede a chance de algo acontecer e é a base para prever resultados e quantificar incertezas. Juntas, aparecem em controle de qualidade, finanças, saúde, produção industrial e tecnologia.</p>
+      <p class="how"><b>Como usar:</b> cada assunto tem 7 blocos (O que é? · Para que serve? · Fórmula · Entendendo a fórmula · Exemplo resolvido · Interpretação · Resumo). Use a busca ou os cards para chegar direto ao tema.</p>
+      <button id="toggleAll" type="button" class="btn small">Recolher todos os exemplos</button>
+    </section>
+
+    <!-- 1º BIMESTRE -->
+    <section class="part" id="bim1">
+      <h2 class="band">1º Bimestre · Estatística Descritiva e Probabilidade</h2>
+      <div class="cards" id="cards1"></div>
+    </section>
+
+    <div id="topics1">
+      <!-- 1 -->
+      <section class="topic" data-bim="1" data-title="Distribuição de Frequências" data-desc="Classes, frequências e regra de Sturges" id="t1">
+        <h3>Distribuição de Frequências</h3>
+        <div class="blk">
+          <h4>O que é?</h4>
+          <p>Uma tabela que agrupa os dados brutos em <b>classes</b> (intervalos) e mostra quantas observações caem em cada uma. Quando há poucos valores diferentes, pode-se listar cada valor; quando há muitos, agrupa-se em classes.</p>
+        </div>
+        <div class="blk">
+          <h4>Para que serve?</h4>
+          <p>Resumir dezenas ou centenas de números em uma visão compacta, mostrando onde os dados se concentram e onde são raros.</p>
+        </div>
+        <div class="blk">
+          <h4>Fórmula</h4>
+          <div class="formula">AT = X<sub>máx</sub> − X<sub>mín</sub>  |  k ≈ 1 + 3,322·log₁₀(n)  |  h = AT / k<br>fr = fi / n  |  Fac = soma acumulada de fi  |  Frac = Fac / n</div>
+        </div>
+        <div class="blk">
+          <h4>Entendendo a fórmula</h4>
+          <p><b>AT</b>: amplitude total (maior − menor valor). <b>k</b>: número de classes (Sturges), arredondado. <b>h</b>: amplitude de cada classe, arredondada <i>para cima</i> para que as classes cubram todos os dados. <b>fi</b>: frequência absoluta (contagem). <b>fr</b>: frequência relativa (proporção). <b>Fac</b>: acumulada, quantos dados há até aquela classe.</p>
+        </div>
+        <details class="blk" open>
+          <summary>Exemplo resolvido</summary>
+          <p>40 revendedores e as unidades compradas (Atividade 1). Menor valor = 6, maior = 39.</p>
+          <ol>
+            <li>AT = 39 − 6 = <b>33</b>.</li>
+            <li>k = 1 + 3,322·log₁₀(40) = 1 + 3,322·1,602 = 6,32 ⇒ <b>k = 6</b>.</li>
+            <li>h = 33 / 6 = 5,5 ⇒ <b>h = 6</b> (6 × 6 = 36 ≥ 33, cobre todos os dados).</li>
+            <li>Classes <b>[a, b)</b> (inclui o limite inferior, exclui o superior), começando em 6; contar os dados de cada uma.</li>
+          </ol>
+          <div class="tw">
+            <table>
+              <thead>
+                <tr><th>Classe</th><th>Ponto médio</th><th>fi</th><th>fr</th><th>Fac</th><th>Frac</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>6 ⊢ 12</td><td>9</td><td>4</td><td>0,100</td><td>4</td><td>0,100</td></tr>
+                <tr><td>12 ⊢ 18</td><td>15</td><td>8</td><td>0,200</td><td>12</td><td>0,300</td></tr>
+                <tr><td>18 ⊢ 24</td><td>21</td><td>16</td><td>0,400</td><td>28</td><td>0,700</td></tr>
+                <tr><td>24 ⊢ 30</td><td>27</td><td>7</td><td>0,175</td><td>35</td><td>0,875</td></tr>
+                <tr><td>30 ⊢ 36</td><td>33</td><td>4</td><td>0,100</td><td>39</td><td>0,975</td></tr>
+                <tr><td>36 ⊢ 42</td><td>39</td><td>1</td><td>0,025</td><td>40</td><td>1,000</td></tr>
+                <tr class="tot"><td>Total</td><td></td><td>40</td><td>1,000</td><td></td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note ok">Se usar k = 7, h = 33/7 = 4,71 ⇒ 5; a regra de Sturges é um guia, e k = 6 ou 7 são aceitáveis. Confira a convenção pedida pelo professor.</p>
+        </details>
+        <div class="blk">
+          <h4>Interpretação</h4>
+          <p>A classe 18 ⊢ 24 concentra 40% dos revendedores. Pela Frac, 70% compraram menos de 24 unidades. Poucos compram muito: só 1 (2,5%) chegou a 36 ou mais.</p>
+        </div>
+        <div class="blk">
+          <h4>Resumo</h4>
+          <p>Calcule AT → k → h → monte as classes → conte (fi) → derive fr, Fac e Frac. A soma de fi deve ser n e a de fr deve ser 1.</p>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section class="topic" data-bim="1" data-title="Gráficos Estatísticos" data-desc="Histograma e polígono de frequências" id="t2">
+        <h3>Gráficos Estatísticos: Histograma e Polígono</h3>
+        <div class="blk">
+          <h4>O que é?</h4>
+          <p>O <b>histograma</b> é um gráfico de barras encostadas, uma por classe, com altura igual à frequência. O <b>polígono de frequências</b> é uma linha que une os pontos (ponto médio da classe, frequência).</p>
+        </div>
+        <div class="blk">
+          <h4>Para que serve?</h4>
+          <p>Enxergar a forma da distribuição: onde está o pico, se é simétrica ou se tem cauda longa para um lado.</p>
+        </div>
+        <div class="blk">
+          <h4>Fórmula</h4>
+          <div class="formula">Ponto médio: X<sub>i</sub> = (limite inferior + limite superior) / 2</div>
+        </div>
+        <div class="blk">
+          <h4>Entendendo a fórmula</h4>
+          <p>No histograma, o eixo horizontal mostra os limites das classes e o vertical, fi. No polígono, use X<sub>i</sub> no eixo horizontal e acrescente uma classe vazia (fi = 0) em cada extremidade para a linha “fechar” no eixo.</p>
+        </div>
+        <details class="blk" open>
+          <summary>Exemplo resolvido</summary>
+          <p>Dados da tabela do assunto 1: fi = 4, 8, 16, 7, 4, 1.</p>
+          <div class="viz" data-viz="hist"></div>
+          <p>Pontos do polígono: (3, 0), (9, 4), (15, 8), (21, 16), (27, 7), (33, 4), (39, 1), (45, 0).</p>
+          <div class="viz" data-viz="poly"></div>
+        </details>
+        <div class="blk">
+          <h4>Interpretação</h4>
+          <p>O pico está em 18 ⊢ 24 e a cauda se me alonga à direita (assimetria positiva): a maioria compra volumes moderados e poucos compram muito. <b>Diferença:</b> o histograma mostra cada classe como área; o polígono mostra a tendência e facilita comparar várias distribuições no mesmo gráfico.</p>
+        </div>
+        <div class="blk">
+          <h4>Resumo</h4>
+          <p>Histograma = barras por classe. Polígono = linha pelos pontos médios, com classes vazias nas pontas. Ambos usam as mesmas frequências.</p>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="topic" data-bim="1" data-title="Medidas de Tendência Central" data-desc="Média aritmética" id="t3">
+        <h3>Medidas de Tendência Central: Média Aritmética</h3>
+        <div class="blk">
+          <h4>O que é?</h4>
+          <p>É o valor que representa o “centro” dos dados: a soma de todos os valores dividida pela quantidade deles.</p>
+        </div>
+        <div class="blk">
+          <h4>Para que serve?</h4>
+          <p>Resumir um conjunto em um único número típico, como a média de unidades compradas ou a nota média de uma turma.</p>
+        </div>
+        <div class="blk">
+          <h4>Fórmula</h4>
+          <div class="formula">Dados brutos: x̄ = Σxi / n<br>Dados em classes: x̄ = Σ(fi · Xi) / n</div>
+        </div>
+        <div class="blk">
+          <h4>Entendendo a fórmula</h4>
+          <p><b>Σ</b> = somatório; <b>n</b> = total de observações; <b>Xi</b> = ponto médio da classe; <b>fi</b> = quantas observações a classe tem (peso). Use a primeira quando tiver os dados originais e a segunda quando só tiver a tabela.</p>
+        </div>
+        <details class="blk" open>
+          <summary>Exemplo resolvido</summary>
+          <p><b>Dados brutos</b> (40 revendedores): Σxi = 822, então x̄ = 822 / 40 = <b>20,55</b>.</p>
+          <p><b>Dados agrupados:</b> Σfi·Xi = 4·9 + 8·15 + 16·21 + 7·27 + 4·33 + 1·39 = 36 + 120 + 336 + 189 + 132 + 39 = 852, logo x̄ = 852 / 40 = <b>21,3</b>.</p>
+          <p class="note ok">A diferença (20,55 × 21,3) existe porque o agrupamento usa o ponto médio no lugar de cada valor real. Nos próximos cálculos, usamos 21,3 para ser coerente com a tabela.</p>
+        </details>
+        <div class="blk">
+          <h4>Interpretação</h4>
+          <p>Em média, cada revendedor adquiriu cerca de 21 unidades no mês. Como a distribuição tem cauda à direita, valores muito altos puxam a média para cima.</p>
+        </div>
+        <div class="blk">
+          <h4>Resumo</h4>
+          <p>Média = soma ÷ quantidade. Em tabelas de classes, multiplique cada ponto médio pela sua frequência.</p>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="topic" data-bim="1" data-title="Medidas de Dispersão" data-desc="Variância, desvio padrão e coeficiente de variação" id="t4">
+        <h3>Medidas de Dispersão</h3>
+        <div class="blk">
+          <h4>O que é?</h4>
+          <p>Medem o quanto os dados se afastam da média. <b>Variância</b> e <b>desvio padrão</b> dão o afastamento em unidades absolutas; o <b>coeficiente de variação</b> dá o afastamento relativo (em %).</p>
+        </div>
+        <div class="blk">
+          <h4>Para que serve?</h4>
+          <p>Duas turmas podem ter a mesma média e comportamentos muito diferentes. A dispersão mostra se os dados são homogêneos ou espalhados, e o CV permite comparar conjuntos com unidades ou médias distintas.</p>
+        </div>
+        <div class="blk">
+          <h4>Fórmula</h4>
+          <div class="formula">s² = Σfi(Xi − x̄)² / (n − 1) = [Σfi·Xi² − n·x̄²] / (n − 1)<br>s = √s²  |  CV = (s / x̄) · 100%</div>
+        </div>
+        <div class="blk">
+          <h4>Entendendo a fórmula</h4>
+          <p>Eleva-se ao quadrado cada desvio (Xi − x̄) para que positivos e negativos não se anulem. Divide-se por <b>n − 1</b> quando os dados são uma <b>amostra</b> (caso dos 40 revendedores) e por <b>n</b> quando são a população inteira. O desvio padrão volta à unidade original.</p>
+        </div>
+        <details class="blk" open>
+          <summary>Exemplo resolvido</summary>
+          <ol>
+            <li>x̄ = 21,3 (assunto 3).</li>
+            <li>Σfi·Xi² = 4·81 + 8·225 + 16·441 + 7·729 + 4·1089 + 1·1521 = 20 160.</li>
+            <li>n·x̄² = 40 · 453,69 = 18 147,6.</li>
+            <li>s² = (20 160 − 18 147,6) / 39 = 2 012,4 / 39 = <b>51,60</b>.</li>
+            <li>s = √51,60 = <b>7,18</b> unidades.</li>
+            <li>CV = 7,18 / 21,3 = <b>33,7%</b>.</li>
+          </ol>
+          <p class="note ok">Se tratar os dados como população (÷ n): s² = 50,31; s = 7,09; CV = 33,3%. Use a convenção da sua aula.</p>
+        </details>
+        <div class="blk">
+          <h4>Interpretação</h4>
+          <p>Os revendedores se afastam, em média, cerca de 7 unidades da média. Uma regra prática (varia conforme o autor): CV < 15% baixa dispersão, 15% a 30% média, > 30% alta. Aqui a dispersão é alta: as compras são pouco homogêneas.</p>
+        </div>
+        <div class="blk">
+          <h4>Resumo</h4>
+          <p>Variância → desvio padrão (raiz) → CV (desvio ÷ média). Amostra: n − 1. Quanto maior o CV, mais heterogêneos os dados.</p>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section class="topic" data-bim="1" data-title="Correlação e Regressão Linear" data-desc="Diagrama de dispersão, Pearson e reta ajustada" id="t5">
+        <h3>Correlação e Regressão Linear</h3>
+        <div class="blk">
+          <h4>O que é?</h4>
+          <p>A <b>correlação</b> mede o quanto duas variáveis variam juntas. A <b>regressão linear</b> encontra a reta ŷ = a + b·x que melhor descreve essa relação, permitindo estimar y a partir de x. O <b>diagrama de dispersão</b> é o gráfico de pontos (x, y) que mostra a relação visualmente.</p>
+        </div>
+        <div class="blk">
+          <h4>Para que serve?</h4>
+          <p>Verificar se, por exemplo, a produção industrial cresce com o tempo e prever a produção em um ano que não foi medido.</p>
+        </div>
+        <div class="blk">
+          <h4>Fórmula</h4>
+          <div class="formula">r = [nΣxy − ΣxΣy] / √{[nΣx² − (Σx)²] · [nΣy² − (Σy)²]}<br>b = [nΣxy − ΣxΣy] / [nΣx² − (Σx)²]  |  a = ȳ − b·x̄  |  ŷ = a + b·x</div>
+        </div>
+        <div class="blk">
+          <h4>Entendendo a fórmula</h4>
+          <p><b>r</b> varia de −1 a +1. <b>r > 0</b>: correlação positiva (x sobe, y sobe). <b>r < 0</b>: negativa. <b>r ≈ 0</b>: nula (sem relação linear). Quanto mais perto de ±1, mais forte (referência comum: |r| ≥ 0,7 forte). <b>b</b> é a inclinação (quanto y muda por unidade de x) e <b>a</b> é o intercepto. Subtrair 1984 dos anos (x′ = ano − 1984) simplifica as contas.</p>
+        </div>
+        <details class="blk" open>
+          <summary>Exemplo resolvido</summary>
+          <p>Produção (t) de 1980 a 1988: 34, 36, 36, 38, 41, 42, 43, 44, 46. Com x′ = −4, …, 4 e n = 9:</p>
+          <p>Σx = 0 · Σy = 360 · Σxy = 90 · Σx² = 60 · Σy² = 14 538 · x̄ = 0 · ȳ = 40.</p>
+          <ol>
+            <li>r = (9·90 − 0·360) / √[(9·60 − 0)(9·14 538 − 360²)] = 810 / √(540 · 1 242) = 810 / 818,95 = <b>0,9891</b>.</li>
+            <li>b = 810 / 540 = <b>1,5</b>; a = 40 − 1,5·0 = <b>40</b>. Reta: <b>ŷ = 1,5x + 40</b> (x = ano − 1984).</li>
+            <li>Para 1979: x = 1979 − 1984 = −5 ⇒ ŷ = 1,5·(−5) + 40 = <b>32,5 t</b>.</li>
+          </ol>
+          <div class="viz" data-viz="scatter"></div>
+        </details>
+        <div class="blk">
+          <h4>Interpretação</h4>
+          <p>r = 0,99 indica correlação positiva muito forte; r² ≈ 0,978, ou seja, cerca de 98% da variação da produção é explicada pelo tempo. A produção aumentou, em média, 1,5 t por ano. Atenção: 1979 está fora do período observado (extrapolação), então a estimativa é menos confiável.</p>
+        </div>
+        <div class="blk">
+          <h4>Resumo</h4>
+          <p>Dispersão → r (força e sentido) → reta ŷ = a + bx → estimativas. Correlação não prova causa.</p>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section class="topic" data-bim="1" data-title="Probabilidade e Tabelas de Contingência" data-desc="Eventos, união, interseção e complementar" id="t6">
+        <h3>Probabilidade e Tabelas de Contingência</h3>
+        <div class="blk">
+          <h4>O que é?</h4>
+          <p><b>Espaço amostral (Ω)</b> é o conjunto de todos os resultados possíveis; <b>evento</b> é um subconjunto de Ω. A <b>probabilidade</b> de um evento é a razão entre os casos favoráveis e os casos possíveis. Uma <b>tabela de contingência</b> cruza duas características e conta quantos casos há em cada combinação.</p>
+        </div>
+        <div class="blk">
+          <h4>Para que serve?</h4>
+          <p>Calcular chances a partir de dados reais, como a probabilidade de sortear uma pessoa com determinado perfil.</p>
+        </div>
+        <div class="blk">
+          <h4>Fórmula</h4>
+          <div class="formula">P(A) = n(A) / n(Ω)  |  P(Aᶜ) = 1 − P(A)<br>P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</div>
+        </div>
+        <div class="blk">
+          <h4>Entendendo a fórmula</h4>
+          <p><b>“ou”</b> = união (somar e descontar a interseção para não contar duas vezes). <b>“e”</b> = interseção (a célula onde as duas características se cruzam na tabela). <b>“não”</b> = complementar. Se os eventos não têm elementos em comum, P(A ∩ B) = 0.</p>
+        </div>
+        <details class="blk" open>
+          <summary>Exemplo resolvido</summary>
+          <p>30 mulheres, por estado civil e cor dos cabelos:</p>
+          <div class="tw">
+            <table>
+              <thead>
+                <tr><th>Estado civil</th><th>Loira</th><th>Morena</th><th>Ruiva</th><th>Total</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Casada</td><td>5</td><td>8</td><td>3</td><td>16</td></tr>
+                <tr><td>Solteira</td><td>2</td><td>4</td><td>1</td><td>7</td></tr>
+                <tr><td>Viúva</td><td>0</td><td>1</td><td>1</td><td>2</td></tr>
+                <tr><td>Divorciada</td><td>3</td><td>1</td><td>1</td><td>5</td></tr>
+                <tr class="tot"><td>Total</td><td>10</td><td>14</td><td>6</td><td>30</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul>
+            <li><b>A</b> (casada): 16/30 = <b>8/15</b>.</li>
+            <li><b>B</b> (não loira): 1 − 10/30 = 20/30 = <b>2/3</b>.</li>
+            <li><b>C</b> (nem morena nem ruiva = loira): 10/30 = <b>1/3</b>.</li>
+            <li><b>D</b> (viúva): 2/30 = <b>1/15</b>.</li>
+            <li><b>E</b> (solteira ou casada): 7/30 + 16/30 − 0 = <b>23/30</b> (sem interseção).</li>
+            <li><b>F</b> (loira e casada): 5/30 = <b>1/6</b>.</li>
+            <li><b>G</b> (morena e solteira): 4/30 = <b>2/15</b>.</li>
+            <li><b>H</b> (viúva e ruiva): 1/30.</li>
+          </ul>
+        </details>
+        <div class="blk">
+          <h4>Interpretação</h4>
+          <p>Mais da metade do grupo (53,3%) é casada. A chance de sortear uma loira casada (1/6 ≈ 16,7%) é menor que a de sortear uma casada qualquer (8/15), pois “e” restringe o evento.</p>
+        </div>
+        <div class="blk">
+          <h4>Resumo</h4>
+          <p>Probabilidade = favoráveis ÷ possíveis. “Ou” soma (menos a interseção), “e” é a célula da tabela, “não” é 1 − P.</p>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section class="topic" data-bim="1" data-title="Probabilidade de Eventos Dependentes" data-desc="Sorteios sem reposição" id="t7">
+        <h3>Probabilidade de Eventos Dependentes</h3>
+        <div class="blk">
+          <h4>O que é?</h4>
+          <p>Dois eventos são <b>dependentes</b> quando o resultado do primeiro altera as chances do segundo. É o caso típico de sorteios <b>sem reposição</b>: o número sorteado não volta ao conjunto.</p>
+        </div>
+        <div class="blk">
+          <h4>Para que serve?</h4>
+          <p>Calcular a chance de sequências de sorteios, como rifas, extrações de cartas ou peças retiradas de um lote.</p>
+        </div>
+        <div class="blk">
+          <h4>Fórmula</h4>
+          <div class="formula">P(A ∩ B) = P(A) · P(B | A)</div>
+        </div>
+        <div class="blk">
+          <h4>Entendendo a fórmula</h4>
+          <p><b>P(B | A)</b> lê-se “probabilidade de B dado que A ocorreu”. Como A já aconteceu, o total e os casos favoráveis são recalculados. Se houvesse reposição, os eventos seriam independentes e P(A ∩ B) = P(A)·P(B).</p>
+        </div>
+        <details class="blk" open>
+          <summary>Exemplo resolvido</summary>
+          <p>Rifa de 15 números, dois prêmios sorteados um de cada vez; você comprou 3 números. G₁ = ganhar o 1º prêmio, G₂ = ganhar o 2º.</p>
+          <ol>
+            <li>P(G₁) = 3/15.</li>
+            <li>Ganhou o 1º com um dos seus números, restam 14 números no sorteio, dos quais 2 são seus: P(G₂ | G₁) = 2/14.</li>
+            <li>P(G₁ ∩ G₂) = 3/15 · 2/14 = 6/210 = <b>1/35</b> ≈ 2,86%.</li>
+          </ol>
+        </details>
+        <div class="blk">
+          <h4>Interpretação</h4>
+          <p>Há cerca de 2,9% de chance de levar os dois prêmios. Se o mesmo número pudesse ser sorteado de novo (com reposição), seria 3/15 · 3/15 = 4%: a retirada sem reposição reduz a chance.</p>
+        </div>
+        <div class="blk">
+          <h4>Resumo</h4>
+          <p>Sem reposição → multiplique, atualizando total e favoráveis a cada etapa.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- 2º BIMESTRE -->
+    <section class="part" id="bim2">
+      <h2 class="band">2º Bimestre · Variáveis Aleatórias e Distribuições</h2>
+      <div class="cards" id="cards2"></div>
+    </section>
+
+    <div id="topics2">
+      <!-- 8 -->
+      <section class="topic" data-bim="2" data-title="Variáveis Aleatórias Discretas" data-desc="Função de probabilidade, esperança e variância" id="t8">
+        <h3>Variáveis Aleatórias Discretas</h3>
+        <div class="blk">
+          <h4>O que é?</h4>
+          <p>Uma <b>variável aleatória</b> associa um número a cada resultado de um experimento aleatório. É <b>discreta</b> quando assume valores contáveis (0, 1, 2…). A <b>função de probabilidade</b> informa P(X = x) para cada valor possível.</p>
+        </div>
+        <div class="blk">
+          <h4>Para que serve?</h4>
+          <p>Descrever o comportamento de um fenômeno com resultados incertos e calcular o valor médio esperado e a variabilidade.</p>
+        </div>
+        <div class="blk">
+          <h4>Fórmula</h4>
+          <div class="formula">E(X) = Σ x·P(x)  |  Var(X) = E(X²) − [E(X)]²  |  DP = √Var(X)<br>E(aX + b) = a·E(X) + b  |  Var(aX + b) = a²·Var(X)</div>
+        </div>
+        <div class="blk">
+          <h4>Entendendo a fórmula</h4>
+          <p>E(X) é a média ponderada pelas probabilidades. E(X²) = Σ x²·P(x). Em transformações, somar uma constante <b>b</b> desloca a média mas <b>não</b> altera a variância; multiplicar por <b>a</b> multiplica a média por a e a variância por a². A soma das probabilidades deve ser 1.</p>
+        </div>
+        <details class="blk" open>
+          <summary>Exemplo resolvido</summary>
+          <p>Urna A: 3 brancas e 2 pretas. Urna B: 5 brancas e 1 preta. Retira-se uma bola de cada; X = número de bolas brancas. <b>a)</b> X ∈ {0, 1, 2}.</p>
+          <p><b>b)</b> P(branca em A) = 3/5; P(branca em B) = 5/6 (as retiradas são independentes).</p>
+          <div class="tw">
+            <table>
+              <thead>
+                <tr><th>x</th><th>Cálculo</th><th>P(X = x)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>0</td><td>2/5 · 1/6</td><td>1/15 = 0,0667</td></tr>
+                <tr><td>1</td><td>3/5·1/6 + 2/5·5/6 = 3/30 + 10/30</td><td>13/30 = 0,4333</td></tr>
+                <tr><td>2</td><td>3/5 · 5/6</td><td>1/2 = 0,5</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="viz" data-viz="pmf" data-type="urn"></div>
+          <p><b>c)</b> P(0 < X ≤ 2) = 13/30 + 15/30 = <b>0,9333</b>; P(X > 1) = P(X = 2) = <b>0,5</b>.</p>
+          <p><b>d)</b> E(X) = 0 + 13/30 + 2·(1/2) = <b>1,4333</b>. E(X²) = 13/30 + 4·(1/2) = 2,4333. Var = 2,4333 − 1,4333² = <b>0,3789</b>. DP = √0,3789 = <b>0,6155</b>.</p>
+          <p><b>e)</b> E(5X) = 5·1,4333 = <b>7,1667</b>; E(3X − 4) = 3·1,4333 − 4 = <b>0,3</b>.</p>
+          <p><b>f)</b> Var(6X) = 36·0,3789 = <b>13,64</b>; Var(3X − 10) = 9·0,3789 = <b>3,41</b>.</p>
+        </details>
+        <div class="blk">
+          <h4>Interpretação</h4>
+          <p>Em média, saem 1,43 bolas brancas por rodada, com desvio de 0,62. O valor 2 é o mais provável (50%).</p>
+        </div>
+        <div class="blk">
+          <h4>Resumo</h4>
+          <p>Liste valores → calcule P(x) → verifique que somam 1 → E(X), Var, DP → aplique as regras de transformação.</p>
+        </div>
+      </section>
+
+      <!-- 9 -->
+      <section class="topic" data-bim="2" data-title="Distribuição Binomial" data-desc="n tentativas, sucesso e fracasso" id="t9">
+        <h3>Distribuição Binomial</h3>
+        <div class="blk">
+          <h4>O que é?</h4>
+          <p>Modela o número de <b>sucessos</b> em n tentativas repetidas. Características: n fixo; cada tentativa tem só dois resultados (sucesso ou fracasso); tentativas independentes; probabilidade p de sucesso constante.</p>
+        </div>
+        <div class="blk">
+          <h4>Para que serve?</h4>
+          <p>Situações como “quantos, entre 20 títulos, serão pagos com atraso?” ou “quantas peças defeituosas em um lote pequeno?”.</p>
+        </div>
+        <div class="blk">
+          <h4>Fórmula</h4>
+          <div class="formula">P(X = k) = C(n, k) · p<sup>k</sup> · q<sup>n−k</sup>,   C(n, k) = n! / [k!(n − k)!]<br>q = 1 − p  |  E(X) = n·p  |  Var(X) = n·p·q</div>
+        </div>
+        <div class="blk">
+          <h4>Entendendo a fórmula</h4>
+          <p><b>n</b>: nº de tentativas; <b>k</b>: nº de sucessos desejado; <b>p</b>: chance de sucesso; <b>q</b>: chance de fracasso. “Sucesso” é o que a pergunta quer contar, mesmo que seja algo ruim. <b>No máximo k</b>: P(X ≤ k) soma de 0 até k. <b>No mínimo k</b>: P(X ≥ k) = 1 − P(X ≤ k − 1). <b>Exatamente k</b>: uma só parcela.</p>
+        </div>
+        <details class="blk" open>
+          <summary>Exemplo resolvido</summary>
+          <p>20% dos títulos são pagos com atraso; 20 títulos pagos no dia. n = 20, sucesso = atraso, p = 0,2, q = 0,8.</p>
+          <p><b>a) No máximo dois com atraso:</b> P(X ≤ 2) = P(0) + P(1) + P(2)</p>
+          <ul>
+            <li>P(0) = 0,8²⁰ = 0,0115</li>
+            <li>P(1) = 20 · 0,2 · 0,8¹⁹ = 0,0576</li>
+            <li>P(2) = 190 · 0,2² · 0,8¹⁸ = 0,1369</li>
+          </ul>
+          <p>Soma ≈ <b>0,206</b> (0,2061 sem arredondar as parcelas).</p>
+          <p><b>b) No mínimo três pagos sem atraso:</b> agora sucesso = “sem atraso”, p = 0,8. P(Y ≥ 3) = 1 − P(Y ≤ 2). Y ≤ 2 equivale a 18 ou mais títulos atrasados, algo da ordem de 3·10⁻¹¹. Logo P ≈ <b>1</b>.</p>
+          <div class="viz" data-viz="pmf" data-type="bin"></div>
+        </details>
+        <div class="blk">
+          <h4>Interpretação</h4>
+          <p>Há cerca de 20,6% de chance de no máximo 2 atrasos em 20 títulos. Esperam-se E(X) = 20·0,2 = 4 atrasos. Já ter ao menos 3 títulos em dia é praticamente certo.</p>
+        </div>
+        <div class="blk">
+          <h4>Resumo</h4>
+          <p>Identifique n, p e o que é “sucesso”. Use a fórmula para cada k e some (ou use o complementar) em “no máximo/mínimo”.</p>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section class="topic" data-bim="2" data-title="Distribuição de Poisson" data-desc="Ocorrências em um intervalo" id="t10">
+        <h3>Distribuição de Poisson</h3>
+        <div class="blk">
+          <h4>O que é?</h4>
+          <p>Modela o <b>número de ocorrências em um intervalo</b> (tempo, área, comprimento) quando os eventos acontecem de forma independente e com taxa média constante λ. Diferente da binomial, não há um número fixo de tentativas.</p>
+        </div>
+        <div class="blk">
+          <h4>Para que serve?</h4>
+          <p>Clientes por hora, chamadas por minuto, defeitos por metro de tecido, acidentes por mês.</p>
+        </div>
+        <div class="blk">
+          <h4>Fórmula</h4>
+          <div class="formula">P(X = k) = e<sup>−λ</sup> · λ<sup>k</sup> / k!  |  E(X) = λ  |  Var(X) = λ</div>
+        </div>
+        <div class="blk">
+          <h4>Entendendo a fórmula</h4>
+          <p><b>λ</b>: média de ocorrências no intervalo considerado (ajuste λ se o intervalo mudar, por exemplo 6 por hora = 3 por meia hora). <b>k</b>: nº de ocorrências desejado. <b>e</b> ≈ 2,71828. “Ou menos” soma de 0 até k.</p>
+        </div>
+        <details class="blk" open>
+          <summary>Exemplo resolvido</summary>
+          <p>Média de λ = 6 clientes por hora. e⁻⁶ = 0,002479.</p>
+          <p><b>a)</b> P(X = 3) = e⁻⁶ · 6³ / 3! = 0,002479 · 216 / 6 = <b>0,0892</b>.</p>
+          <p><b>b)</b> P(X ≤ 3) = e⁻⁶ (1 + 6 + 18 + 36) = 0,002479 · 61 = <b>0,1512</b> (P(0) = 0,0025; P(1) = 0,0149; P(2) = 0,0446; P(3) = 0,0892).</p>
+          <p><b>c)</b> E(X) = <b>6</b>; DP = √6 = <b>2,45</b>.</p>
+          <p class="note">Divergência: o gabarito traz 0,15128 em (b), mas o valor exato é 0,15120. Provável arredondamento. (a) e (c) conferem.</p>
+          <div class="viz" data-viz="pmf" data-type="poi"></div>
+        </details>
+        <div class="blk">
+          <h4>Interpretação</h4>
+          <p>Em uma hora qualquer, a chance de exatamente 3 clientes é de 8,9%; de 3 ou menos, 15,1%. O valor mais comum fica em torno de 6, a média.</p>
+        </div>
+        <div class="blk">
+          <h4>Resumo</h4>
+          <p>Contagem em intervalo + taxa média λ → Poisson. Média e variância são iguais a λ.</p>
+        </div>
+      </section>
+
+      <!-- 11 -->
+      <section class="topic" data-bim="2" data-title="Aproximação pela Distribuição de Poisson" data-desc="Binomial com n grande e p pequeno" id="t11">
+        <h3>Aproximação da Binomial pela Poisson</h3>
+        <div class="blk">
+          <h4>O que é?</h4>
+          <p>Quando uma binomial tem <b>n grande</b> e <b>p muito pequeno</b> (eventos raros), seus resultados ficam muito próximos aos de uma Poisson com λ = n·p, e as contas ficam bem mais simples.</p>
+        </div>
+        <div class="blk">
+          <h4>Para que serve?</h4>
+          <p>Evitar potências e combinações enormes em problemas como peças defeituosas em lotes, onde o defeito é raro.</p>
+        </div>
+        <div class="blk">
+          <h4>Fórmula</h4>
+          <div class="formula">λ = n · p  ⇒  P(X = k) ≈ e<sup>−λ</sup> · λ<sup>k</sup> / k!</div>
+        </div>
+        <div class="blk">
+          <h4>Entendendo a fórmula</h4>
+          <p>Sinais de que cabe a aproximação: o enunciado traz n grande (ex.: ≥ 50), p pequeno (ex.: ≤ 0,1) e λ = np baixo. Os limites exatos variam entre livros; se n for pequeno, prefira a binomial.</p>
+        </div>
+        <details class="blk" open>
+          <summary>Exemplo resolvido</summary>
+          <p>Máquina com 0,2% de peças defeituosas; caixa com 50 peças. n = 50, p = 0,002, <b>λ = 50 · 0,002 = 0,1</b>.</p>
+          <p><b>a)</b> P(X = 0) = e⁻⁰·¹ · 0,1⁰ / 0! = e⁻⁰·¹ = <b>0,9048</b>.</p>
+          <p><b>b)</b> P(X = 1) = e⁻⁰·¹ · 0,1 = <b>0,0905</b>.</p>
+          <p>Conferência com a binomial exata: P(0) = 0,998⁵⁰ ≈ 0,9048 e P(1) = 50·0,002·0,998⁴⁹ ≈ 0,0907, bem próximos.</p>
+        </details>
+        <div class="blk">
+          <h4>Interpretação</h4>
+          <p>Cerca de 90,5% das caixas não têm peça defeituosa e 9,05% têm exatamente uma.</p>
+        </div>
+        <div class="blk">
+          <h4>Resumo</h4>
+          <p>Binomial com n grande e p pequeno → calcule λ = np → use Poisson.</p>
+        </div>
+      </section>
+
+      <!-- 12 -->
+      <section class="topic" data-bim="2" data-title="Distribuição Normal" data-desc="Curva normal, escore Z e tabela" id="t12">
+        <h3>Distribuição Normal</h3>
+        <div class="blk">
+          <h4>O que é?</h4>
+          <p>Distribuição contínua em forma de sino, <b>simétrica</b> em torno da média μ. O desvio padrão σ controla a largura. A <b>área sob a curva</b> entre dois valores é a probabilidade; a área total é 1. Cerca de 68%, 95% e 99,7% dos dados ficam a 1, 2 e 3 desvios da média.</p>
+        </div>
+        <div class="blk">
+          <h4>Para que serve?</h4>
+          <p>Modelar medidas como alturas, custos e tempos de produção e calcular a chance de um valor cair em uma faixa.</p>
+        </div>
+        <div class="blk">
+          <h4>Fórmula</h4>
+          <div class="formula">Z = (X − μ) / σ</div>
+        </div>
+        <div class="blk">
+          <h4>Entendendo a fórmula</h4>
+          <p>O <b>escore Z</b> converte X para a normal padrão (média 0, desvio 1), indicando a quantos desvios padrão o valor está da média. Com Z, usa-se a tabela. A tabela “de 0 a z” dá P(0 < Z < z); por simetria, P(−z < Z < 0) é a mesma. Para P(Z > z) com z > 0, calcule 0,5 − P(0 < Z < z). Intervalos que cruzam a média somam as duas áreas.</p>
+        </div>
+        <details class="blk" open>
+          <summary>Exemplo resolvido</summary>
+          <p><b>Parte 1:</b> X normal, μ = 20, σ = 2.</p>
+          <ul>
+            <li><b>a) P(20 < X < 24):</b> Z de 0 a 2 ⇒ <b>0,4772</b>.</li>
+            <li><b>b) P(18 < X < 26):</b> Z de −1 a 3 ⇒ 0,3413 + 0,4987 = <b>0,8400</b>.</li>
+            <li><b>c) P(16 < X < 28):</b> Z de −2 a 4 ⇒ 0,4772 + ≈0,5000 = <b>≈ 0,9772</b> (a tabela costuma parar em 3,99, e acima disso a área é ≈ 0,5).</li>
+          </ul>
+          <div class="viz" data-viz="normal" data-mu="20" data-sd="2" data-a="20" data-b="24"></div>
+          <p><b>Parte 2:</b> custo de produção normal, μ = 50, σ = 4, preço de venda = 60. Há prejuízo se o custo > 60.</p>
+          <p>Z = (60 − 50)/4 = 2,5. P(X > 60) = 0,5 − 0,4938 = <b>0,0062 = 0,62%</b>.</p>
+          <div class="viz" data-viz="normal" data-mu="50" data-sd="4" data-a="60" data-b="70"></div>
+        </details>
+        <div class="blk">
+          <h4>Interpretação</h4>
+          <p>Na parte 1, 47,7% dos valores ficam entre a média e 24 (2 desvios acima). Na parte 2, apenas 0,62% das unidades custam mais que o preço de venda: prejuízo é raro.</p>
+        </div>
+        <div class="blk">
+          <h4>Resumo</h4>
+          <p>Padronize (Z) → consulte a tabela → ajuste com simetria e com 0,5 (metade da curva) conforme o intervalo pedido.</p>
+        </div>
+      </section>
+    </div>
+
+    <p id="vazio" class="vazio" hidden>Nenhum conteúdo encontrado para essa pesquisa.</p>
+  </main>
+
+  <footer>Estatística Descomplicada · material de estudo, 1º e 2º bimestre.</footer>
+  <button id="topo" type="button" aria-label="Voltar ao topo" hidden>↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
